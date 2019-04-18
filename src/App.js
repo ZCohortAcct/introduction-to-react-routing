@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css';
 
 import Nav from './components/Nav.js';
 import TodoList from './containers/TodoList';
 import TodoNew from './containers/TodoNew';
+import TodoShow from './containers/TodoShow';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 class App extends Component {
   constructor() {
@@ -25,12 +26,13 @@ class App extends Component {
     return (
       <Router>
         <Nav />
-        <div className="App">
-          <Switch>
-            <Route exact path="/" render={(props) => <TodoList {...props} todos={this.state.todos} />} />
-            <Route exact path="/new" render={(props) => <TodoNew {...props} createTodo={this.createTodo} />} />
-          </Switch>
-        </div>
+        <Switch>
+          <div className="App">
+            <Route exact path="/" render={(browserProps) => <TodoList {...browserProps} todos={this.state.todos} />} />
+            <Route exact path="/new" render={(browserProps) => <TodoNew {...browserProps} createTodo={this.createTodo} />} />
+            <Route exact path="/todos/:id" render={(browserProps) => <TodoShow {...browserProps} todos={this.state.todos} />} />
+          </div>
+        </Switch>
       </Router>
     );
   }
