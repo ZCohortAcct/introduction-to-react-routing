@@ -4,12 +4,11 @@ import Todo from '../components/Todo';
 export class TodoShow extends Component {
   render() {
     console.log(this.props);
-    let todo = this.props.todos[this.props.match.params.id];
+
     return (
       <div>
-      { todo ? <React.Fragment><h1>{todo.content}</h1>
-          <p>{todo.completed ? 'You have completed this todo' : 'You have not completed this todo'}</p></React.Fragment> : <h2>This todo doesn't exist</h2>
-      }
+        <h3>{todo.content}</h3>
+        <p>{todo.completed ? 'Great job checking stuff off!' : 'You need to take care of this'}</p>
       </div>
     )
   }

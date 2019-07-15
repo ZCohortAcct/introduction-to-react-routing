@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 //   }
 // }
 
-const Todo = ({content, completed, index}) => <li><Link to={`/todos/${index}`}>{content}</Link> - {completed ? 'Completed' : 'Not Completed' }</li>
+const Todo = ({content, completed}) => <li>content: {content}<br />
+completed: {completed ? 'yes' : 'no'}</li>
 
 export default Todo;
